@@ -127,12 +127,12 @@ Expand beyond a single bracket implementation to support the range of formats or
 
 ### Frontend foundation
 
-The frontend lives at the repository root and is intentionally organized by responsibility:
+The frontend now lives in the `client/` directory and is intentionally organized by responsibility:
 
 - **React + Vite + TypeScript** — fast local development with strict type checking.
 - **React Router** — route composition with a protected-route boundary for authenticated areas.
 - **TanStack Query** — server-state caching and request lifecycle management. Feature queries should be colocated with the feature that owns them.
-- **Tailwind CSS** — utility-first styling with a small brand token set in `tailwind.config.js`.
+- **Tailwind CSS** — utility-first styling with a small brand token set in `client/tailwind.config.js`.
 - **ESLint** — flat-config linting for TypeScript and React hooks.
 
 The current auth provider is a deliberately small local session adapter so the route and UI flow can be developed before Supabase is connected. Replace the provider's `signIn`, `signUp`, and `signOut` implementations with a Supabase adapter without changing page or route consumers.
@@ -140,6 +140,7 @@ The current auth provider is a deliberately small local session adapter so the r
 ### Local development
 
 ```bash
+cd client
 npm install
 cp .env.example .env.local
 npm run dev
@@ -148,6 +149,7 @@ npm run dev
 Available checks:
 
 ```bash
+cd client
 npm run lint
 npm run build
 ```
